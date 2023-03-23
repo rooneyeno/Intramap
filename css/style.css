@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(250, 248, 241);
+}
+
+header {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    vertical-align: middle;
+    color: rgb(197, 137, 64);
+}
+
+a:hover {
+    color: rgb(252, 160, 48);
+
+}
+
+h1 {
+    font-size: 2.1rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#map {
+    height: 600px;
+    max-height: 960px;
+}
+
+.leaflet-tile {
+    filter: hue-rotate(45deg) !important;
+}
