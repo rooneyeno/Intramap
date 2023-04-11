@@ -1,5 +1,5 @@
 var map = L.map("map");
-map.setView([-1.0442421026359054, 37.084241245751855], 17);
+map.setView([-1.0442421026359054, 37.084241245751855], 20);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	maxZoom: 19,
@@ -7,6 +7,31 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
+// Adding A route on path Plus demonstration of movement
+// L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
+// L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
+// map.on('click', function (e) {
+// 	console.log(e)
+// 	var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+
+// L.Routing.control({
+// 	waypoints: [
+// 	  L.latLng(-1.0466962831036657, 37.0854545942582),
+// 	  L.latLng(e.latlng.lat, e.latlng.lng)
+// 	]
+// }).on('routesfound', function (e) {
+				// var routes = e.routes;
+				// console.log(routes);
+
+				// e.routes[0].coordinates.forEach(function (coord, index) {
+				// 	setTimeout(function () {
+				// 		marker.setLatLng([coord.lat, coord.lng]);
+				// 	}, 100 * index)
+				// })
+//   }).addTo(map);
+// })
+
+ //Adding Current Location of the user
 navigator.geolocation.watchPosition(success, error);
 
 function success(pos){
@@ -28,6 +53,8 @@ function error(err) {
 		alert("Can't get current location");
 	}
 }
+
+//This Block shows icons of Traffic Signs
 var greenIcon = L.icon({
 	iconUrl: "20.png",
 	iconSize: [38, 45], // size of the icon
@@ -73,6 +100,8 @@ var seventyIcon = L.icon({
 	iconAnchor: [22, 64],
 	popupAnchor: [-3, -76],
 });
+
+// Each marker/icon  is placed to designated latitude and longitude 
 L.marker([-1.0465645090217723, 37.0862287626064], { icon: greenIcon }).addTo(map);
 L.marker([-1.0415388838627613, 37.079649304218336], { icon: anotherIcon }).addTo(map);
 L.marker([-1.0382577761272127, 37.07732780933246], { icon: thirtyIcon }).addTo(map);
