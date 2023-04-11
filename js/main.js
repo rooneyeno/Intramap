@@ -1,5 +1,5 @@
 var map = L.map("map");
-map.setView([-1.0442421026359054, 37.084241245751855], 20);
+map.setView([-1.0442421026359054, 37.084241245751855], 19);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	maxZoom: 19,
@@ -8,36 +8,49 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 // Adding A route on path Plus demonstration of movement
-// L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
-// L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
-// map.on('click', function (e) {
-// 	console.log(e)
-// 	var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-
-// L.Routing.control({
-// 	waypoints: [
-// 	  L.latLng(-1.0466962831036657, 37.0854545942582),
-// 	  L.latLng(e.latlng.lat, e.latlng.lng)
-// 	]
-// }).on('routesfound', function (e) {
-				// var routes = e.routes;
-				// console.log(routes);
-
-				// e.routes[0].coordinates.forEach(function (coord, index) {
-				// 	setTimeout(function () {
-				// 		marker.setLatLng([coord.lat, coord.lng]);
-				// 	}, 100 * index)
-				// })
-//   }).addTo(map);
+//L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
+// var movtIcon = L.icon({
+// 	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|e85141&chf=a,s,ee00FFFF',
+// 	iconSize: [30, 50]
 // })
+// var marker = L.marker([-1.0466962831036657, 37.0854545942582], {icon: movtIcon}).addTo(map);
+var marker = L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
+map.on('click', function (e) {
+	console.log(e)
+	var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+
+	L.Routing.control({
+		waypoints: [
+		L.latLng(-1.0466962831036657, 37.0854545942582),
+		L.latLng(e.latlng.lat, e.latlng.lng)
+		]
+	}).on('routesfound', function (e) {
+					var routes = e.routes;
+					console.log(routes);
+
+					e.routes[0].coordinates.forEach(function (coord, index) {
+						setTimeout(function () {
+							marker.setLatLng([coord.lat, coord.lng]);
+						}, 10000 * index)
+					})
+	}).addTo(map);
+})
 
  //Adding Current Location of the user
 navigator.geolocation.watchPosition(success, error);
 
+//Remove circle or marker after shifting location
+// let marker, circle;
 function success(pos){
 
 	const lat = pos.coords.latitude;
 	const lng = pos.coords.longitude;
+	// const accuracy = pos.coords.accuracy;
+
+	// if (marker) {
+	// 	map.removeLayer(marker);
+	// 	map.removeLayer(circle);
+	// }
 
 	L.marker([lat, lng]).addTo(map);
 	L.circle([lat, lng], {radius: accuracy }).addTo(map);
@@ -69,6 +82,7 @@ var anotherIcon = L.icon({
 	iconSize: [38, 45],
 	iconAnchor: [22, 64],
 	popupAnchor: [-3, -76],
+	
 });
 var thirtyIcon = L.icon({
 	iconUrl: "30.png",
