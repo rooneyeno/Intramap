@@ -7,6 +7,27 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
+navigator.geolocation.watchPosition(success, error);
+
+function success(pos){
+
+	const lat = pos.coords.latitude;
+	const lng = pos.coords.longitude;
+
+	L.marker([lat, lng]).addTo(map);
+	L.circle([lat, lng], {radius: accuracy }).addTo(map);
+
+	map.fitBounds(circle.getBounds());
+}
+
+function error(err) {
+
+	if (err.code === 1){
+		alert("Please allow geolocation access");
+	} else{
+		alert("Can't get current location");
+	}
+}
 var greenIcon = L.icon({
 	iconUrl: "20.png",
 	iconSize: [38, 45], // size of the icon
