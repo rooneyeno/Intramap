@@ -7,17 +7,42 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
+// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+var popup = L.popup()
+    .setLatLng([-1.0468652041580178, 37.08547070384408])
+    .setContent("ALUMNI PLAZA")
+    .openOn(map);
+var popup = L.popup()
+    .setLatLng([-1.0451113317843883, 37.08455875278159])
+    .setContent("FLT")
+    .openOn(map);
+var popup = L.popup()
+    .setLatLng([-1.046302034239734, 37.085122016674404])
+    .setContent("BL5")
+    .openOn(map);
+
+
+
 // Adding A route on path Plus demonstration of movement
 //L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
-// var movtIcon = L.icon({
-// 	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|e85141&chf=a,s,ee00FFFF',
-// 	iconSize: [30, 50]
-// })
-// var marker = L.marker([-1.0466962831036657, 37.0854545942582], {icon: movtIcon}).addTo(map);
-var marker = L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
+var startIcon = L.icon({
+	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|e85141&chf=a,s,ee00FFFF',
+	iconSize: [30, 50],
+	iconAnchor: [22, 64],
+	popupAnchor: [-3, -76],
+});
+// var endIcon = L.icon({
+// 	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF',
+// 	iconSize: [30, 50],
+// 	iconAnchor: [22, 64],
+// 	popupAnchor: [-3, -76],
+// });
+var marker = L.marker([-1.0466962831036657, 37.0854545942582], {icon: startIcon}).addTo(map);
+// var marker = L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
 map.on('click', function (e) {
 	console.log(e)
-	var newMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+	// var newmarker = L.marker([e.latlng.lat, e.latlng.lng], {icon: endIcon}).addTo(map);
+	var newmarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
 
 	L.Routing.control({
 		waypoints: [
@@ -31,7 +56,7 @@ map.on('click', function (e) {
 					e.routes[0].coordinates.forEach(function (coord, index) {
 						setTimeout(function () {
 							marker.setLatLng([coord.lat, coord.lng]);
-						}, 10000 * index)
+						}, 100 * index)
 					})
 	}).addTo(map);
 })
@@ -68,6 +93,12 @@ function error(err) {
 }
 
 //This Block shows icons of Traffic Signs
+var fiveIcon = L.icon({
+	iconUrl: "5.png",
+	iconSize: [38, 45],
+	iconAnchor: [22, 64],
+	popupAnchor: [-3, -76],
+});
 var greenIcon = L.icon({
 	iconUrl: "20.png",
 	iconSize: [38, 45], // size of the icon
@@ -116,6 +147,8 @@ var seventyIcon = L.icon({
 });
 
 // Each marker/icon  is placed to designated latitude and longitude 
+L.marker([-1.0455042145625537, 37.08462582394026], { icon: fiveIcon }).addTo(map);
+L.marker([-1.0446567775084865, 37.08472506566978], { icon: fiveIcon }).addTo(map);
 L.marker([-1.0465645090217723, 37.0862287626064], { icon: greenIcon }).addTo(map);
 L.marker([-1.0415388838627613, 37.079649304218336], { icon: anotherIcon }).addTo(map);
 L.marker([-1.0382577761272127, 37.07732780933246], { icon: thirtyIcon }).addTo(map);
