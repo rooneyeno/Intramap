@@ -12,16 +12,28 @@ var popup = L.popup()
     .setLatLng([-1.0468652041580178, 37.08547070384408])
     .setContent("ALUMNI PLAZA")
     .openOn(map);
-var popup = L.popup()
+var popup1 = L.popup()
     .setLatLng([-1.0451113317843883, 37.08455875278159])
     .setContent("FLT")
     .openOn(map);
-var popup = L.popup()
+var popup2 = L.popup()
     .setLatLng([-1.046302034239734, 37.085122016674404])
     .setContent("BL5")
     .openOn(map);
 
-
+	// create a red polyline from an array of LatLng points
+var latlngs = [
+		[-1.04666,37.08544],
+		[-1.04644,37.08514],
+		[-1.04632,37.08517],
+		[-1.04569,37.08540],
+		[-1.04542,37.08470]
+	];
+	
+var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+	
+	// zoom the map to the polyline
+map.fitBounds(polyline.getBounds());
 
 // Adding A route on path Plus demonstration of movement
 //L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
@@ -147,6 +159,7 @@ var seventyIcon = L.icon({
 });
 
 // Each marker/icon  is placed to designated latitude and longitude 
+L.marker([-1.04572,37.08529], { icon: fiveIcon }).addTo(map);
 L.marker([-1.0455042145625537, 37.08462582394026], { icon: fiveIcon }).addTo(map);
 L.marker([-1.0446567775084865, 37.08472506566978], { icon: fiveIcon }).addTo(map);
 L.marker([-1.0465645090217723, 37.0862287626064], { icon: greenIcon }).addTo(map);
