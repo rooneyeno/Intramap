@@ -6,7 +6,12 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	attribution:
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
-L.control.locate().addTo(map);
+
+// Added live location
+ var lc = L.control.locate().addTo(map);
+ lc.start();
+//  Option to start or stop at will
+//  lc.stopFollowing()
 // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 var popup = L.popup()
     .setLatLng([-1.0468652041580178, 37.08547070384408])
@@ -73,21 +78,21 @@ map.on('click', function (e) {
 	}).addTo(map);
 })
 
- //Adding Current Location of the user
+//  //Adding Current Location of the user
 // navigator.geolocation.watchPosition(success, error);
 
-//Remove circle or marker after shifting location
-// let marker, circle;
+// //Remove circle or marker after shifting location
+// // let marker, circle;
 // function success(pos){
 
 // 	const lat = pos.coords.latitude;
 // 	const lng = pos.coords.longitude;
 // 	const accuracy = pos.coords.accuracy;
 
-	// if (marker) {
-	// 	map.removeLayer(marker);
-	// 	map.removeLayer(circle);
-	// }
+// 	// if (marker) {
+// 	// 	map.removeLayer(marker);
+// 	// 	map.removeLayer(circle);
+// 	// }
 
 // 	L.marker([lat, lng]).addTo(map);
 // 	L.circle([lat, lng], {radius: accuracy }).addTo(map);
