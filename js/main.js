@@ -1,3 +1,13 @@
+// This code is written in JavaScript and uses the Leaflet.js library to create a map with various functionalities. 
+// It sets up a map object and adds a tile layer from OpenStreetMap. 
+// It also adds three markers on the map using L.popup(), as well as a red polyline between five points. 
+// Additionally, it adds a marker with a custom icon to serve as a starting point for a route, 
+// and then listens for clicks on the map to generate an endpoint for a route. 
+// When a route is generated, it animates the marker along the path using setTimeout().
+
+// There are also sections of code that are commented out, 
+// which would add functionality for displaying the user's current location on the map and 
+// for showing traffic sign icons with custom markers.
 var map = L.map("map");
 map.setView([-1.0442421026359054, 37.084241245751855], 19);
 // L.control.locate().addTo(map);

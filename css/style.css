@@ -1,3 +1,20 @@
+/* The first block sets the margin and padding of all elements to zero and sets the box-sizing property to border-box.
+
+The second block sets the background color of the body element to a light beige color.
+
+The header element is set to have a height of 5rem and is centered horizontally and vertically using flexbox.
+
+The anchor tags are styled to remove underline and set the text color to a brownish color. When hovering over the links, 
+the color changes to a brighter orange.
+
+The h1 tag has a font size of 2.1rem.
+
+The container class sets the maximum width to 960px and centers it horizontally.
+
+The map element has a height of 600px and a maximum height of 960px.
+
+Finally, there is a leaflet-tile class with a filter property that rotates the hue of the map tiles by 45 degrees. */
+
 *,
 *::after,
 *::before {
