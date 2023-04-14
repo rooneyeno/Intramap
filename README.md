@@ -1,9 +1,14 @@
-OPENSTREET MAP WITH SPEED LIMITS
+OPENSTREET MAP WITH LEAFLET JS WITH SPEED LIMITS
 ###
 Using an openstreet map and add speed limits on marked coordinates
 ###
 Speed Signs are drawn on marked Highways
 ###
-REMMY SILVER <silverremmy@gmail.com>
+Live user location
 #
-image.png
+Draw Destination Marker Plus Marker Demonstration of Movement
+#
+REMMY SILVER 
+<silverremmy@gmail.com>
+#
+check image results image.png
