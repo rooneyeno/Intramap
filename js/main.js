@@ -1,22 +1,22 @@
 var map = L.map("map");
 map.setView([-1.0442421026359054, 37.084241245751855], 19);
-
+// L.control.locate().addTo(map);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	maxZoom: 19,
 	attribution:
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
-
+L.control.locate().addTo(map);
 // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 var popup = L.popup()
     .setLatLng([-1.0468652041580178, 37.08547070384408])
     .setContent("ALUMNI PLAZA")
     .openOn(map);
-var popup1 = L.popup()
+var popup = L.popup()
     .setLatLng([-1.0451113317843883, 37.08455875278159])
     .setContent("FLT")
     .openOn(map);
-var popup2 = L.popup()
+var popup = L.popup()
     .setLatLng([-1.046302034239734, 37.085122016674404])
     .setContent("BL5")
     .openOn(map);
@@ -74,35 +74,35 @@ map.on('click', function (e) {
 })
 
  //Adding Current Location of the user
-navigator.geolocation.watchPosition(success, error);
+// navigator.geolocation.watchPosition(success, error);
 
 //Remove circle or marker after shifting location
 // let marker, circle;
-function success(pos){
+// function success(pos){
 
-	const lat = pos.coords.latitude;
-	const lng = pos.coords.longitude;
-	// const accuracy = pos.coords.accuracy;
+// 	const lat = pos.coords.latitude;
+// 	const lng = pos.coords.longitude;
+// 	const accuracy = pos.coords.accuracy;
 
 	// if (marker) {
 	// 	map.removeLayer(marker);
 	// 	map.removeLayer(circle);
 	// }
 
-	L.marker([lat, lng]).addTo(map);
-	L.circle([lat, lng], {radius: accuracy }).addTo(map);
+// 	L.marker([lat, lng]).addTo(map);
+// 	L.circle([lat, lng], {radius: accuracy }).addTo(map);
 
-	map.fitBounds(circle.getBounds());
-}
+// 	map.fitBounds(circle.getBounds());
+// }
 
-function error(err) {
+// function error(err) {
 
-	if (err.code === 1){
-		alert("Please allow geolocation access");
-	} else{
-		alert("Can't get current location");
-	}
-}
+// 	if (err.code === 1){
+// 		alert("Please allow geolocation access");
+// 	} else{
+// 		alert("Can't get current location");
+// 	}
+// }
 
 //This Block shows icons of Traffic Signs
 var fiveIcon = L.icon({
