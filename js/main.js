@@ -23,18 +23,49 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 //  Option to start or stop at will
 //  lc.stopFollowing()
 // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-var popup = L.popup()
+var popup1 = L.popup()
     .setLatLng([-1.0468652041580178, 37.08547070384408])
-    .setContent("ALUMNI PLAZA")
-    .openOn(map);
-var popup = L.popup()
+    .setContent("ALUMNI PLAZA");
+    // .openOn(map);
+var popup2 = L.popup()
     .setLatLng([-1.0451113317843883, 37.08455875278159])
-    .setContent("FLT")
-    .openOn(map);
-var popup = L.popup()
+    .setContent("FLT");
+    // .openOn(map);
+var popup3 = L.popup()
     .setLatLng([-1.046302034239734, 37.085122016674404])
-    .setContent("BL5")
-    .openOn(map);
+    .setContent("BL5");
+    // .openOn(map);
+var popup4 = L.popup()
+    .setLatLng([-1.04643,37.08536])
+    .setContent("LT");
+var popup5 = L.popup()
+    .setLatLng([-1.04613,37.08542])
+    .setContent("LIBRARY");
+var popup6 = L.popup()
+    .setLatLng([-1.04560,37.08525])
+    .setContent("PARKING SPOT");
+var popup7 = L.popup()
+    .setLatLng([-1.04593,37.08476])
+    .setContent("BASKETBALL COURT");
+var popup8 = L.popup()
+    .setLatLng([-1.04703,37.08598])
+    .setContent("MAIN GATE");
+var popup9 = L.popup()
+    .setLatLng([-1.04640,37.08471])
+    .setContent("LADIES HOSTEL");
+var popup10 = L.popup()
+    .setLatLng([-1.04640,37.08471])
+    .setContent("LADIES HOSTEL");
+popup1.addTo(map);
+popup2.addTo(map);
+popup3.addTo(map);
+popup4.addTo(map);
+popup5.addTo(map);
+popup6.addTo(map);
+popup7.addTo(map);
+popup8.addTo(map);
+popup9.addTo(map);
+popup10.addTo(map);
 
 	// create a red polyline from an array of LatLng points
 var latlngs = [
@@ -45,7 +76,7 @@ var latlngs = [
 		[-1.04542,37.08470]
 	];
 	
-var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+var polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map);
 	
 	// zoom the map to the polyline
 map.fitBounds(polyline.getBounds());
