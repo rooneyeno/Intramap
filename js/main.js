@@ -82,42 +82,40 @@ var polyline = L.polyline(latlngs, {color: 'blue'}).addTo(map);
 map.fitBounds(polyline.getBounds());
 
 // Adding A route on path Plus demonstration of movement
-//L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
 var startIcon = L.icon({
 	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|e85141&chf=a,s,ee00FFFF',
 	iconSize: [30, 50],
 	iconAnchor: [22, 64],
 	popupAnchor: [-3, -76],
-});
-// var endIcon = L.icon({
-// 	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF',
-// 	iconSize: [30, 50],
-// 	iconAnchor: [22, 64],
-// 	popupAnchor: [-3, -76],
-// });
-var marker = L.marker([-1.0466962831036657, 37.0854545942582], {icon: startIcon}).addTo(map);
-// var marker = L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
-map.on('click', function (e) {
-	console.log(e)
-	// var newmarker = L.marker([e.latlng.lat, e.latlng.lng], {icon: endIcon}).addTo(map);
-	var newmarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
-
-	L.Routing.control({
+  });
+  
+  var endIcon = L.icon({
+	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF',
+	iconSize: [30, 50],
+	iconAnchor: [22, 64],
+	popupAnchor: [-3, -76],
+  });
+  
+  var startMarker = null; // To keep track of the starting point
+  var endMarker = null;   // To keep track of the destination point
+  
+  map.on('click', function (e) {
+	if (!startMarker) {
+	  // Create the start marker
+	  startMarker = L.marker(e.latlng, { icon: startIcon }).addTo(map);
+	} else if (!endMarker) {
+	  // Create the destination marker
+	  endMarker = L.marker(e.latlng, { icon: endIcon }).addTo(map);
+  
+	  // Create a route between start and destination
+	  L.Routing.control({
 		waypoints: [
-		L.latLng(-1.0466962831036657, 37.0854545942582),
-		L.latLng(e.latlng.lat, e.latlng.lng)
+		  L.latLng(startMarker.getLatLng().lat, startMarker.getLatLng().lng),
+		  L.latLng(endMarker.getLatLng().lat, endMarker.getLatLng().lng)
 		]
-	}).on('routesfound', function (e) {
-					var routes = e.routes;
-					console.log(routes);
-
-					e.routes[0].coordinates.forEach(function (coord, index) {
-						setTimeout(function () {
-							marker.setLatLng([coord.lat, coord.lng]);
-						}, 100 * index)
-					})
-	}).addTo(map);
-})
+	  }).addTo(map);
+	}
+  });
 
 //  //Adding Current Location of the user
 // navigator.geolocation.watchPosition(success, error);
