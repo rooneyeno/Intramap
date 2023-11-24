@@ -54,8 +54,14 @@ var popup9 = L.popup()
     .setLatLng([-1.04640,37.08471])
     .setContent("LADIES HOSTEL");
 var popup10 = L.popup()
-    .setLatLng([-1.04640,37.08471])
-    .setContent("LADIES HOSTEL");
+    .setLatLng([-1.04570,37.08506])
+    .setContent("MLT");
+var popup11 = L.popup()
+    .setLatLng([-1.04712,37.08572])
+    .setContent("BOOKSHOP");
+var popup12 = L.popup()
+    .setLatLng([-1.04709,37.08530])
+    .setContent("PARKING SPOT");
 popup1.addTo(map);
 popup2.addTo(map);
 popup3.addTo(map);
@@ -66,6 +72,9 @@ popup7.addTo(map);
 popup8.addTo(map);
 popup9.addTo(map);
 popup10.addTo(map);
+popup11.addTo(map);
+popup12.addTo(map);
+
 
 	// create a red polyline from an array of LatLng points
 var latlngs = [

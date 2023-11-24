@@ -1,0 +1,36 @@
+//L.marker([-1.045213268668465, 37.08471162235977]).addTo(map);
+var startIcon = L.icon({
+	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|e85141&chf=a,s,ee00FFFF',
+	iconSize: [30, 50],
+	iconAnchor: [22, 64],
+	popupAnchor: [-3, -76],
+});
+// var endIcon = L.icon({
+// 	iconUrl: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|2ecc71&chf=a,s,ee00FFFF',
+// 	iconSize: [30, 50],
+// 	iconAnchor: [22, 64],
+// 	popupAnchor: [-3, -76],
+// });
+var marker = L.marker([-1.0466962831036657, 37.0854545942582], {icon: startIcon}).addTo(map);
+// var marker = L.marker([-1.0466962831036657, 37.0854545942582]).addTo(map);
+map.on('click', function (e) {
+	console.log(e)
+	// var newmarker = L.marker([e.latlng.lat, e.latlng.lng], {icon: endIcon}).addTo(map);
+	var newmarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(map);
+
+	L.Routing.control({
+		waypoints: [
+		L.latLng(-1.0466962831036657, 37.0854545942582),
+		L.latLng(e.latlng.lat, e.latlng.lng)
+		]
+	}).on('routesfound', function (e) {
+					var routes = e.routes;
+					console.log(routes);
+
+					e.routes[0].coordinates.forEach(function (coord, index) {
+						setTimeout(function () {
+							marker.setLatLng([coord.lat, coord.lng]);
+						}, 100 * index)
+					})
+	}).addTo(map);
+})
